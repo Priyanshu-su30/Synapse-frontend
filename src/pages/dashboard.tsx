@@ -19,7 +19,7 @@ export function Dashboard() {
 
   return <div>
     <Sidebar />
-    <div className="p-4  ml-72 min-h-screen bg-gray-100 border-2">
+    <div className="p-4  ml-72 min-h-screen bg-gray-100 dark:bg-black-700 dark:text-white">
       <CreateContentModal open={modalOpen} onClose={() => {
         setModalOpen(false);
       }} />

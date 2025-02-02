@@ -1,9 +1,9 @@
-import { DocumentIcon } from "../icons/DocumentIcon";
-import { LinksIcon } from "../icons/LinksIcon";
 import { ShareIcon } from "../icons/ShareIcon";
-import { TagsIcon } from "../icons/TagsIcon";
-import { TwitterIcon } from "../icons/TwitterIcon";
-import { YoutubeIcon } from "../icons/YoutubeIcon";
+// import { DocumentIcon } from "../icons/DocumentIcon";
+// import { LinksIcon } from "../icons/LinksIcon";
+// import { TagsIcon } from "../icons/TagsIcon";
+// import { TwitterIcon } from "../icons/TwitterIcon";
+// import { YoutubeIcon } from "../icons/YoutubeIcon";
 import { DeleteBtn } from "./DeleteBtn";
 
 interface CardProps {
@@ -14,33 +14,35 @@ interface CardProps {
 }
 
 export function Card({ title, link, type, contentId }: CardProps) {
-    const renderIcon = () => {
-        switch (type) {
-            case "twitter":
-                return <TwitterIcon />;
-            case "youtube":
-                return <YoutubeIcon />;
-            case "link":
-                return <LinksIcon />;
-            case "tag":
-                return <TagsIcon />;
-            case "document":
-                return <DocumentIcon />;
-        }
-    };
+
+
+    // const renderIcon = () => {
+    //     switch (type) {
+    //         case "twitter":
+    //             return <TwitterIcon />;
+    //         case "youtube":
+    //             return <YoutubeIcon />;
+    //         case "link":
+    //             return <LinksIcon />;
+    //         case "tag":
+    //             return <TagsIcon />;
+    //         case "document":
+    //             return <DocumentIcon />;
+    //     }
+    // };
 
     return (
         <div>
-            <div className="p-4 bg-white rounded-xl border-gray-200 max-w-72  border min-h-48 min-w-72 ">
+            <div className="p-4 bg-white rounded-xl border-gray-200 max-w-72  border min-h-48 min-w-72 dark:bg-black-700 ">
                 <div className="flex justify-between">
                     <div className="flex items-center text-md">
                         <div className="text-gray-500 pr-2">
-                            {renderIcon()}
+                            {/* {renderIcon()} */}
                         </div>
                         {title}
                     </div>
                     <div className="flex items-center">
-                        <div className="pr-2 text-gray-500">
+                        <div className="pr-2 text-gray-500 dark:text-white">
                             <a href={link} target="_blank">
                                 <ShareIcon />
                             </a>
@@ -51,7 +53,7 @@ export function Card({ title, link, type, contentId }: CardProps) {
                     </div>
                 </div>
                 <div className="pt-4">
-                    {type === "youtube" && (
+                    {/* {type === "youtube" && (
                         <iframe
                             src={link.replace('watch', 'embed')}
                             title="YouTube video player"
@@ -65,10 +67,112 @@ export function Card({ title, link, type, contentId }: CardProps) {
                     {type === "twitter" && (
                         <blockquote className="twitter-tweet">
                             <a href={link.replace("x.com", "twitter.com")}></a>
-                        </blockquote>
-                    )}
+                        </blockquote> 
+                    )}*/}
+                    {type === "youtube" && <iframe className="w-full" src={link.replace("watch", "embed").replace("?v=", "/")} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>}
+
+                    {type === "twitter" && <blockquote className="twitter-tweet">
+                        <a href={link.replace("x.com", "twitter.com")}></a> 
+                    </blockquote>}
                 </div>
             </div>
         </div>
     );
 }
+
+
+
+
+
+
+// import { DocumentIcon } from "../icons/DocumentIcon";
+// import { LinksIcon } from "../icons/LinksIcon";
+// import { ShareIcon } from "../icons/ShareIcon";
+// import { TagsIcon } from "../icons/TagsIcon";
+// import { TwitterIcon } from "../icons/TwitterIcon";
+// import { YoutubeIcon } from "../icons/YoutubeIcon";
+// import { DeleteBtn } from "./DeleteBtn";
+// import { useEffect } from "react"; // Import useEffect
+
+// interface CardProps {
+//     title: string;
+//     link: string;
+//     contentId: string;
+//     type: "twitter" | "youtube" | "document" | "link" | "tag";
+// }
+
+// export function Card({ title, link, type, contentId }: CardProps) {
+//     // Load Twitter widget script when the component mounts
+//     useEffect(() => {
+//         if (type === "twitter" || type === "youtube") {
+//             const script = document.createElement("script");
+//             script.src = "https://platform.twitter.com/widgets.js";
+//             script.async = true;
+//             document.body.appendChild(script);
+
+//             // Cleanup script when the component unmounts
+//             return () => {
+//                 document.body.removeChild(script);
+//             };
+//         }
+//     }, [type]);
+
+//     const renderIcon = () => {
+//         switch (type) {
+//             case "twitter":
+//                 return <TwitterIcon />;
+//             case "youtube":
+//                 return <YoutubeIcon />;
+//             case "link":
+//                 return <LinksIcon />;
+//             case "tag":
+//                 return <TagsIcon />;
+//             case "document":
+//                 return <DocumentIcon />;
+//             default:
+//                 return null;
+//         }
+//     };
+
+//     return (
+//         <div>
+//             <div className="p-4 bg-white rounded-xl border-gray-200 max-w-72 border min-h-48 min-w-72">
+//                 <div className="flex justify-between">
+//                     <div className="flex items-center text-md">
+//                         <div className="text-gray-500 pr-2">{renderIcon()}</div>
+//                         {title}
+//                     </div>
+//                     <div className="flex items-center">
+//                         <div className="pr-2 text-gray-500">
+//                             <a href={link} target="_blank" rel="noopener noreferrer">
+//                                 <ShareIcon />
+//                             </a>
+//                         </div>
+//                         <div className="text-gray-500">
+//                             <DeleteBtn contentId={contentId} />
+//                         </div>
+//                     </div>
+//                 </div>
+//                 <div className="pt-4">
+//                     {type === "youtube" && (
+//                         <iframe
+//                             className="w-full"
+//                             src={link.replace("watch", "embed").replace("?v=", "/")} // Fix YouTube embed URL
+//                             title="YouTube video player"
+//                             frameBorder="0"
+//                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+//                             referrerPolicy="strict-origin-when-cross-origin"
+//                             allowFullScreen
+//                         ></iframe>
+//                     )}
+
+//                     {type === "twitter" && (
+//                         <blockquote className="twitter-tweet">
+//                             <a href={link.replace("x.com", "twitter.com")}></a>
+//                         </blockquote>
+//                     )}
+//                 </div>
+//             </div>
+//         </div>
+//     );
+// }

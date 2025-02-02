@@ -21,7 +21,7 @@ export function DeleteBtn({ contentId }: DeleteBtnProps) {
     };
 
     return (
-        <a onClick={handleDelete} className="cursor-pointer">
+        <a onClick={handleDelete} className="cursor-pointer dark:text-white">
             <DeleteIcon />
         </a>
     );

@@ -1,10 +1,10 @@
 import { DocumentIcon } from "../icons/DocumentIcon";
 import { LinksIcon } from "../icons/LinksIcon";
 import { Logo } from "../icons/Logo";
-import { Logout } from "../icons/Logout";
 import { TagsIcon } from "../icons/TagsIcon";
 import { TwitterIcon } from "../icons/TwitterIcon";
 import { YoutubeIcon } from "../icons/YoutubeIcon";
+import LogoutButton from "./Logout";
 import { SidebarItem } from "./SidebarItem";
 import Switch from "./ThemeToggle";
 
@@ -16,7 +16,7 @@ export function Sidebar() {
                 <Logo />
             </div>
             Brainly
-            <div className="pl-8">
+            <div className="pl-8 pt-3">
                 <Switch/>
 
             </div>
@@ -28,8 +28,11 @@ export function Sidebar() {
             <SidebarItem text="Link" icon={<LinksIcon />} />
             <SidebarItem text="Tag" icon={<TagsIcon />} />
         </div>
-        <div className="pl-4 pt-60">
-            <SidebarItem text="Logout" icon={<Logout />} />
+        <div className="pl-4 pt-60 ">            
+            <div>
+                <LogoutButton/>
+            </div>
+
         </div>
     </div>
     );

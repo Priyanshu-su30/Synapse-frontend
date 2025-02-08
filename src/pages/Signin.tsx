@@ -29,7 +29,7 @@ export function Signin() {
             <Input reference={usernameRef} placeholder="Username" />
             <Input reference={passwordRef} placeholder="Password" />
             <div className="flex justify-center pt-4">
-                <Button onClick={signin}  loading={false} variant="primary" text="Signin" fullWidth={true} />                
+                <Button onClick={signin}  loading={false} variant="primary" text="Sign in" fullWidth={true} />                
                 <ToastContainer/>
             </div>
         </div>

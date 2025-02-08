@@ -5,8 +5,9 @@ import { BACKEND_URL } from "../config";
 export function useContent() {
     const [contents, setContents] = useState([]);
 
-    function refresh() {
+    function refresh(type?: string) {
         axios.get(`${BACKEND_URL}/api/v1/content`, {
+            params: {type},
             headers: {
                 "Authorization": localStorage.getItem("token")
             }

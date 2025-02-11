@@ -44,19 +44,19 @@ export function CreateContentModal({open, onClose}) {
             </div>
             <div className="w-screen h-screen fixed top-0 left-0 flex justify-center">
                 <div className="flex items-center justify-center">
-                    <span className="bg-white opacity-100 p-4 rounded fixed">
+                    <span className="bg-white dark:bg-purple-600 opacity-100 p-4 rounded fixed ">
                         <div className="flex justify-end">
                             <div onClick={onClose} className="cursor-pointer">
                                 <CrossIcon />
                             </div>
                         </div>
-                        <div>
+                        <div > 
                             <Input reference={titleRef} placeholder={"Title"} />
                             <Input reference={linkRef} placeholder={"Link"} />
                         </div>
                         <div>
                             <h1>Type</h1>
-                            <div className="flex gap-1 justify-center pb-2">
+                            <div className="flex gap-1 justify-center pb-2 ">
                                 <Button text="Youtube" variant={type === ContentType.Youtube ? "primary" : "secondary"} onClick={() => {
                                     setType(ContentType.Youtube)
                                 }}></Button>

@@ -15,7 +15,7 @@ export function Sidebar() {
             <div className="pr-2 text-purple-600">
                 <Logo />
             </div>
-            Brainly
+            Synapse
             <div className="pl-8 pt-3">
                 <Switch/>
 

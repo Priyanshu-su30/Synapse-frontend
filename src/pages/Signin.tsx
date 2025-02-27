@@ -4,7 +4,7 @@ import { Input } from "../components/Input";
 import { BACKEND_URL } from "../config";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from 'react-toastify';
 
 export function Signin() {
     const usernameRef = useRef<HTMLInputElement>();
@@ -21,16 +21,17 @@ export function Signin() {
         })
         const jwt = response.data.token;
         localStorage.setItem("token", jwt);
-        navigate("/dashboard");        
-        toast("Signin Success");
+        navigate("/dashboard");     
     }
+
+	const notify = () => toast("Successfully Signin");
+
     return <div className="h-screen w-screen bg-gray-200 flex justify-center items-center">
         <div className="bg-white rounded-xl border min-w-48 p-8">
             <Input reference={usernameRef} placeholder="Username" />
             <Input reference={passwordRef} placeholder="Password" />
             <div className="flex justify-center pt-4">
-                <Button onClick={signin}  loading={false} variant="primary" text="Sign in" fullWidth={true} />                
-                <ToastContainer/>
+                <Button onClick={() => { signin(); notify(); }}  loading={false} variant="primary" text="Sign in" fullWidth={true} />  
             </div>
         </div>
     </div>

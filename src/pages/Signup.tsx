@@ -11,6 +11,8 @@ export function Signup() {
     const passwordRef = useRef<HTMLInputElement>();
     const navigate = useNavigate();
 
+    const notify = () => toast("Account created");
+
     async function signup() {
         const username = usernameRef.current?.value;
         console.log(usernameRef.current)
@@ -20,7 +22,6 @@ export function Signup() {
             password
         })
         navigate("/signin")
-        toast("Signup Success!")
     }
 
     return <div className="h-screen w-screen bg-gray-200 flex justify-center items-center">
@@ -28,7 +29,7 @@ export function Signup() {
             <Input reference={usernameRef} placeholder="Username" />
             <Input reference={passwordRef} placeholder="Password" />
             <div className="flex justify-center pt-4">
-                <Button onClick={signup} loading={false} variant="primary" text="Sign up" fullWidth={true} />
+                <Button onClick={() =>{signup(); notify() }} loading={false} variant="primary" text="Sign up" fullWidth={true} />
             </div>
         </div>
     </div>

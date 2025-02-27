@@ -16,8 +16,6 @@ interface CardProps {
 
 export function Card({ title, link, type, contentId }: CardProps) {
     
-    console.log("[Card] Type received:", type);
-    
     const renderIcon = () => {
         switch (type) {
             case "twitter":
@@ -37,7 +35,7 @@ export function Card({ title, link, type, contentId }: CardProps) {
 
     return (
         <div>
-            <div className="p-4 bg-white rounded-xl border-gray-200 max-w-72 border min-h-48 min-w-72 dark:bg-black-700">
+            <div className="p-4 bg-white rounded-xl border-gray-200 max-w-72 border min-h-48 min-w-72 dark:bg-black-700 hover:shadow-[8px_9px_16px_7px_#c6f6d5]">
                 <div className="flex justify-between">
                     <div className="flex items-center text-md">
                         <div className="text-gray-500 pr-2">

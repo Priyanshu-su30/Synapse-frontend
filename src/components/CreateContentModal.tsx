@@ -14,8 +14,13 @@ export enum ContentType {
     Tag = 'tag'
 }
 
+interface CreateContentModalProps {
+    open: boolean;
+    onClose: () => void; // Define the type for onClose
+}
+
 // controlled component
-export function CreateContentModal({open, onClose}) {
+export function CreateContentModal({ open, onClose }: CreateContentModalProps) {
     const titleRef = useRef<HTMLInputElement>();
     const linkRef = useRef<HTMLInputElement>();
     const [type, setType] = useState(ContentType.Youtube);

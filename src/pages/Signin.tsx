@@ -4,7 +4,7 @@ import { Input } from "../components/Input";
 import { BACKEND_URL } from "../config";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 export function Signin() {
     const usernameRef = useRef<HTMLInputElement>();

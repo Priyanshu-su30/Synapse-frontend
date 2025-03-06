@@ -7,6 +7,77 @@ import { YoutubeIcon } from "../icons/YoutubeIcon";
 import { DeleteBtn } from "./DeleteBtn";
 import { ContentType } from "./CreateContentModal";
 
+
+import React, { useRef, useState } from "react";
+
+interface Position {
+  x: number;
+  y: number;
+}
+
+interface SpotlightCardProps extends React.PropsWithChildren {
+  className?: string;
+  spotlightColor?: `rgba(${number}, ${number}, ${number}, ${number})`;
+}
+
+const SpotlightCard: React.FC<SpotlightCardProps> = ({
+  children,
+  className = "",
+  spotlightColor = "rgba(255, 255, 255, 0.25)"
+}) => {
+  const divRef = useRef<HTMLDivElement>(null);
+  const [isFocused, setIsFocused] = useState<boolean>(false);
+  const [position, setPosition] = useState<Position>({ x: 0, y: 0 });
+  const [opacity, setOpacity] = useState<number>(0);
+
+  const handleMouseMove: React.MouseEventHandler<HTMLDivElement> = (e) => {
+    if (!divRef.current || isFocused) return;
+
+    const rect = divRef.current.getBoundingClientRect();
+    setPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+  };
+
+  const handleFocus = () => {
+    setIsFocused(true);
+    setOpacity(0.9);
+  };
+
+  const handleBlur = () => {
+    setIsFocused(false);
+    setOpacity(0);
+  };
+
+  const handleMouseEnter = () => {
+    setOpacity(0.9);
+  };
+
+  const handleMouseLeave = () => {
+    setOpacity(0);
+  };
+
+  return (
+    <div
+      ref={divRef}
+      onMouseMove={handleMouseMove}
+      onFocus={handleFocus}
+      onBlur={handleBlur}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      className={`relative overflow-hidden ${className}`}
+    >
+      <div
+        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 ease-in-out"
+        style={{
+          opacity,
+          background: `radial-gradient(circle at ${position.x}px ${position.y}px, ${spotlightColor}, transparent 80%)`,
+        }}
+      />
+      {children}
+    </div>
+  );
+};
+
+
 interface CardProps {
     title: string;
     link: string;
@@ -35,7 +106,8 @@ export function Card({ title, link, type, contentId }: CardProps) {
 
     return (
         <div>
-            <div className="p-4 bg-white rounded-xl border-gray-200 max-w-72 border min-h-48 min-w-72 dark:bg-black-700 hover:shadow-[8px_9px_16px_7px_#c6f6d5]">
+        <SpotlightCard className="custom-spotlight-card" spotlightColor="rgba(0, 229, 255, 0.2)">
+            <div className="p-4 bg-white rounded-xl border-gray-200 max-w-72 border min-h-48 min-w-72 dark:bg-black-700 ">
                 <div className="flex justify-between">
                     <div className="flex items-center text-md">
                         <div className="text-gray-500 pr-2">
@@ -75,6 +147,7 @@ export function Card({ title, link, type, contentId }: CardProps) {
                     )}
                 </div>
             </div>
+        </SpotlightCard>
         </div>
     );
 }

@@ -44,18 +44,20 @@ export function CreateContentModal({ open, onClose }: CreateContentModalProps) {
     }
 
     return <div>
+    
         {open && <div> 
-            <div className="w-screen h-screen bg-slate-500 fixed top-0 left-0 opacity-60 flex justify-center">
+            <div className="w-screen h-screen bg-slate-500 fixed top-0 left-0 opacity-60 flex justify-center z-40">
                
             </div>
-            <div className="w-screen h-screen fixed top-0 left-0 flex justify-center">
+            <div className="w-screen h-screen fixed top-0 left-0 flex justify-center z-50">
                 <div className="flex items-center justify-center">
-                    <span className="bg-white dark:bg-purple-600 opacity-100 p-4 rounded fixed ">
+                    <span className="bg-white dark:bg-purple-600 opacity-100 p-4 rounded fixed z-50">
                         <div className="flex justify-end">
                             <div onClick={onClose} className="cursor-pointer">
                                 <CrossIcon />
                             </div>
                         </div>
+
                         <div > 
                             <Input reference={titleRef} placeholder={"Title"} />
                             <Input reference={linkRef} placeholder={"Link"} />
@@ -86,7 +88,6 @@ export function CreateContentModal({ open, onClose }: CreateContentModalProps) {
                     </span>
                 </div>     
             </div>
-            
         </div>}
     </div>
 

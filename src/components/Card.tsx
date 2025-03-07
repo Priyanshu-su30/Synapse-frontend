@@ -106,8 +106,8 @@ export function Card({ title, link, type, contentId }: CardProps) {
 
     return (
         <div>
-        <SpotlightCard className="custom-spotlight-card" spotlightColor="rgba(0, 229, 255, 0.2)">
-            <div className="p-4 bg-white rounded-xl border-gray-200 max-w-72 border min-h-48 min-w-72 dark:bg-black-700 ">
+            <SpotlightCard className="p-4 bg-white rounded-xl border-gray-200 max-w-72 border min-h-48 min-w-72 dark:bg-black-700"
+                spotlightColor="rgba(0, 229, 255, 0.2)">
                 <div className="flex justify-between">
                     <div className="flex items-center text-md">
                         <div className="text-gray-500 pr-2">
@@ -146,8 +146,7 @@ export function Card({ title, link, type, contentId }: CardProps) {
                         </blockquote>
                     )}
                 </div>
-            </div>
-        </SpotlightCard>
+            </SpotlightCard>
         </div>
     );
 }

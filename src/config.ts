@@ -1,1 +1,1 @@
-export const BACKEND_URL = "https://synapse-backend-kheo.onrender.com"
+export const BACKEND_URL = process.env.BACKENDURL;

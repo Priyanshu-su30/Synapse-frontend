@@ -4,8 +4,10 @@ interface InputProps {
     reference?: any
 }
 
-export function Input({placeholder, reference}: InputProps) {
-    return <div>
-        <input ref={reference} placeholder={placeholder} type={"text"} className="px-4 py-2 border rounded m-2" ></input>
-    </div>
+export function Input({placeholder, reference}: InputProps){
+    return (
+        <div>
+            <input ref={reference} placeholder={placeholder} type={"text"} className="m-2 w-[240px] text-[14px] dark:bg-[#303030] dark:text-white p-2 border dark:border-white/10 rounded-md outline-none ring-2 ring-blue-500/0 focus:ring-blue-500" ></input>
+        </div>
+    )
 }

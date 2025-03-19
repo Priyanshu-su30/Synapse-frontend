@@ -2,9 +2,9 @@
 import { useRef, useState } from "react";
 import { CrossIcon } from "../icons/CrossIcon";
 import { Button } from "./Button";
-import { Input } from "./Input";
 import { BACKEND_URL } from "../config";
 import axios from "axios";
+import { Input } from "./Input";
 
 export enum ContentType {
     Youtube = "youtube",
@@ -51,7 +51,7 @@ export function CreateContentModal({ open, onClose }: CreateContentModalProps) {
             </div>
             <div className="w-screen h-screen fixed top-0 left-0 flex justify-center z-50">
                 <div className="flex items-center justify-center">
-                    <span className="bg-white dark:bg-purple-600 opacity-100 p-4 rounded fixed z-50">
+                    <span className="bg-white dark:bg-black-700 opacity-100 p-4 rounded fixed z-50">
                         <div className="flex justify-end">
                             <div onClick={onClose} className="cursor-pointer">
                                 <CrossIcon />

@@ -5,7 +5,6 @@ import axios from "axios";
 import { BACKEND_URL } from "../config";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { Logo } from "../icons/Logo";
 
 export function Signup() {
     const usernameRef = useRef<HTMLInputElement>();

@@ -23,16 +23,7 @@ export function Signup() {
         })
         navigate("/signin")
     }
-
-    // return <div className="h-screen w-screen bg-gray-200 flex justify-center items-center">
-    //     <div className="bg-white rounded-xl border min-w-48 p-8">
-    //         <Input reference={usernameRef} placeholder="Username" />
-    //         <Input reference={passwordRef} placeholder="Password" />
-    //         <div className="flex justify-center pt-4">
-    //             <Button onClick={() =>{signup(); notify() }} loading={false} variant="primary" text="Sign up" fullWidth={true} />
-    //         </div>
-    //     </div>
-    // </div>
+   
     return(
         <div className="bg-[#1c1c1c] text-white">
             <div className="h-screen w-screen flex justify-center items-center">
@@ -55,7 +46,7 @@ export function Signup() {
                     </div>
                     <div className="py-4 text-xs">
                         Already have an account? 
-                        <a href="signin"> Signin</a>
+                        <button onClick={() => {navigate('/signin')}} className="text-blue-400"> Signin</button>
                     </div>
                 </div>
             </div>

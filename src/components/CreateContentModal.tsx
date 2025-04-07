@@ -43,8 +43,8 @@ export function CreateContentModal({ open, onClose }: CreateContentModalProps) {
 
     }
 
-    return <div>
-    
+    return (
+    <div>    
         {open && <div> 
             <div className="w-screen h-screen bg-slate-500 fixed top-0 left-0 opacity-60 flex justify-center z-40">
                
@@ -59,7 +59,9 @@ export function CreateContentModal({ open, onClose }: CreateContentModalProps) {
                         </div>
 
                         <div > 
+                            <span className="text-white/70 font-sans text-[14px] my-1">Title</span>
                             <Input reference={titleRef} placeholder={"Title"} />
+                            <span className="text-white/70 font-sans text-[14px] my-1">Link</span>
                             <Input reference={linkRef} placeholder={"Link"} />
                         </div>
                         <div>
@@ -90,5 +92,5 @@ export function CreateContentModal({ open, onClose }: CreateContentModalProps) {
             </div>
         </div>}
     </div>
-
+    )
 }

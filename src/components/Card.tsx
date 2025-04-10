@@ -6,7 +6,7 @@ import { TwitterIcon } from "../icons/TwitterIcon";
 import { YoutubeIcon } from "../icons/YoutubeIcon";
 import { DeleteBtn } from "./DeleteBtn";
 import { ContentType } from "./CreateContentModal";
-
+import { Tweet } from "react-tweet";
 
 import React, { useRef, useState } from "react";
 
@@ -85,6 +85,9 @@ interface CardProps {
     type: ContentType;
 }
 
+
+
+
 export function Card({ title, link, type, contentId }: CardProps) {
     
     const renderIcon = () => {
@@ -103,6 +106,15 @@ export function Card({ title, link, type, contentId }: CardProps) {
                 return <DocumentIcon />; 
         }
     };
+
+    const extractTweetId = (link) => {
+      const regex = /\/status\/(\d+)/;
+      const match = link.match(regex);
+      return match ? match[1] : null;
+    };
+
+    const tweetId = extractTweetId(link);
+
 
     return (
         <div>
@@ -141,9 +153,11 @@ export function Card({ title, link, type, contentId }: CardProps) {
                     )}
 
                     {type === "twitter" && (
-                        <blockquote className="twitter-tweet">
-                            <a href={link.replace("x.com", "twitter.com")}></a>
-                        </blockquote>
+                        // <blockquote className="twitter-tweet">
+                        //     <a href={link.replace("x.com", "twitter.com")}></a>
+                        // </blockquote>
+                        
+                        <Tweet id={tweetId} />
                     )}
                 </div>
             </SpotlightCard>

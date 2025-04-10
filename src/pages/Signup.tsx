@@ -8,21 +8,44 @@ import { toast } from "react-toastify";
 import ClickSpark from "../animations/ClickSpark";
 
 export function Signup() {
-    const usernameRef = useRef<HTMLInputElement>();
-    const passwordRef = useRef<HTMLInputElement>();
     const navigate = useNavigate();
 
-    const notify = () => toast("Account created");
+    const usernameRef = useRef<HTMLInputElement>();
+    const passwordRef = useRef<HTMLInputElement>();
 
     async function signup() {
         const username = usernameRef.current?.value;
-        console.log(usernameRef.current)
         const password = passwordRef.current?.value;
-        await axios.post(BACKEND_URL + "/api/v1/signup", {
-            username,
-            password
-        })
-        navigate("/signin")
+
+        if (!username || !password) {
+            toast.error("Please fill in all fields");
+            return;
+        }
+
+        if (username.length < 3) {
+            toast.error("Username must be at least 3 characters");
+            return;
+        }
+
+        if (password.length < 6) {
+            toast.error("Password must be at least 6 characters");
+            return;
+        }
+
+        try{
+            await axios.post(BACKEND_URL + "/api/v1/signup", {
+                username,
+                password
+            })
+            toast.success("Account created successfully")
+            navigate("/signin")
+        } catch (error) {
+            if(axios.isAxiosError(error)){
+                toast.error(error.response?.data?.message || "Failed to create account")
+            } else {
+                toast.error("An unexpected error occured")
+            }
+        }
     }
    
     return(        
@@ -44,7 +67,7 @@ export function Signup() {
                             <AccountInput reference={passwordRef} placeholder="Enter your password..." type={"password"} />
                         </div>
                         <div className="flex justify-center pt-4">
-                            <Button onClick={() =>{signup(); notify() }} loading={false} variant="primary" text="Sign up" fullWidth={true} />
+                            <Button onClick={() =>{signup() }} loading={false} variant="primary" text="Sign up" fullWidth={true} />
                         </div>
                         <div className="py-4 text-xs">
                             Already have an account? 
